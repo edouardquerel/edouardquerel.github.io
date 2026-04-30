@@ -254,6 +254,22 @@
     .tech-slide-num{font-size:56px}
   }
 
+  /* TECHNOLOGY (mobile stacked variant) */
+  .tech-stack{padding: 80px 0 40px}
+  .tech-stack-eyebrow{margin-bottom: 48px}
+  .tech-stack-slide{
+    display:flex; flex-direction:column; gap:24px;
+    padding: 48px 0;
+    border-top:1px solid var(--line);
+  }
+  .tech-stack-slide:first-of-type{border-top:none; padding-top:0}
+  .tech-stack-slide .tech-slide-diagram{
+    aspect-ratio: 5/4;
+    max-height: 60vh;
+    width: 100%;
+  }
+  .tech-stack-slide .tech-slide-title{font-size: clamp(28px, 7vw, 36px)}
+
   /* SPECS */
   .specs-section{
     background: linear-gradient(180deg, var(--bg) 0%, color-mix(in oklab, var(--panel) 70%, var(--bg)) 50%, var(--bg) 100%);
