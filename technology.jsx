@@ -131,9 +131,21 @@ const TECH_SLIDES = [
 function Technology() {
   const wrapRef = useTechRef(null);
   const [progress, setProgress] = useTechState(0);
+  const [isMobile, setIsMobile] = useTechState(
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 760px)').matches
+  );
   const slideCount = TECH_SLIDES.length;
 
   useTechEffect(() => {
+    const mq = window.matchMedia('(max-width: 760px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  useTechEffect(() => {
+    if (isMobile) return;
     const wrap = wrapRef.current;
     if (!wrap) return;
     const onScroll = () => {
@@ -150,7 +162,45 @@ function Technology() {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
     };
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) {
+    return (
+      <section className="tech-stack" id="technology">
+        <div className="container">
+          <div className="eyebrow tech-stack-eyebrow"><span className="dot"></span>Technology</div>
+          {TECH_SLIDES.map((s) => {
+            const Diagram = s.Diagram;
+            return (
+              <article key={s.n} className="tech-stack-slide">
+                <div className="tech-slide-diagram">
+                  <div className={`tech-diagram-frame ${s.diagramClass || ''}`}>
+                    <div className="tech-diagram-corner">
+                      Fig. {s.n}{s.figCaption ? ` · ${s.figCaption}` : ''}
+                    </div>
+                    <Diagram />
+                  </div>
+                </div>
+                <div className="tech-slide-text">
+                  <div className="eyebrow tech-slide-eyebrow"><span className="dot"></span>{s.eyebrow}</div>
+                  <h2 className="tech-slide-title">{s.title}</h2>
+                  <p className="tech-slide-body">{s.body}</p>
+                  <ul className="tech-slide-bullets">
+                    {s.bullets.map(([k, v]) => (
+                      <li key={k}>
+                        <span className="k">{k}</span>
+                        <span className="v">{v}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+    );
+  }
 
   const continuous = progress * (slideCount - 1);
   const currentIndex = Math.max(0, Math.min(slideCount - 1, Math.round(continuous)));
