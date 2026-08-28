@@ -3,10 +3,13 @@
 
 const { useState: useTechState, useEffect: useTechEffect, useRef: useTechRef } = React;
 
+// Cache-buster stamped once per page load — not per render, or scrolling refetches every image.
+const ASSET_V = Date.now();
+
 function SlideAnatomy() {
   return (
     <div className="tech-anatomy-img">
-      <img src={`assets/lib-vs-ssb.png?v=${Date.now()}`} alt="Cross-section comparison: Li-ion (graphite anode, separator, cathode in liquid electrolyte) vs solid-state (Li metal anode, solid electrolyte cathode)." />
+      <img src={`assets/lib-vs-ssb.png?v=${ASSET_V}`} alt="Cross-section comparison: Li-ion (graphite anode, separator, cathode in liquid electrolyte) vs solid-state (Li metal anode, solid electrolyte cathode)." />
     </div>
   );
 }
@@ -71,7 +74,7 @@ function SlideAnatomy() {
 function SlideChallenge() {
   return (
     <div className="tech-anatomy-img">
-      <img src={`assets/residual-voids.png?v=${Date.now()}`} alt="Cross-section of a slurry-coated solid-state electrode with residual voids." />
+      <img src={`assets/solvent_moisture_exposure.png?v=${ASSET_V}`} alt="Schematic: solid electrolyte and active material particles exposed to solvent processing develop degraded surfaces — ionic conductivity drops and resistive interfaces form." />
     </div>
   );
 }
@@ -79,7 +82,7 @@ function SlideChallenge() {
 function SlideUSP() {
   return (
     <div className="tech-anatomy-img">
-      <img src={`assets/line-photo.png?v=${Date.now()}`} alt="Photograph of Ternon's dry-coating production line." />
+      <img src={`assets/line-photo.png?v=${ASSET_V}`} alt="Photograph of Ternon's dry-coating production line." />
     </div>
   );
 }
@@ -90,7 +93,7 @@ const TECH_SLIDES = [
     figCaption: 'Battery anatomy',
     eyebrow: 'The promise',
     title: 'Solid-state vs Li-ion.',
-    body: "Solid-state batteries will be foundational to the technologies shaping the coming decades: robotics, drones, sustainable transport, advanced medical devices. Their promise is a step-change in energy density and operational safety. \n\nThis is not a distant prospect. The science is mature. Manufacturing at scale is the remaining frontier. ",
+    body: "Solid-state batteries promise to revolutionize robots, drones, medical devices, and electric vehicles. \n\nManufacturing them at scale is the remaining challenge. ",
     bullets: [
       ['Energy density', 'up to 2x over Li-ion'],
       ['Safety', 'safe at extreme temperatures/charging conditions'],
@@ -98,15 +101,29 @@ const TECH_SLIDES = [
     layout: 'image-left',
     Diagram: SlideAnatomy,
   },
+  // {
+  //   n: '02',
+  //   figCaption: 'The Swiss cheese problem: voids that block ion flow',
+  //   eyebrow: 'The challenge',
+  //   title: 'Manufacturing solid-state electrodes.',
+  //   body: 'Today\'s lithium-ion electrode production technologies fail to deliver the key attributes solid-state batteries require. \n\nWhere lithium-ion electrodes are manufactured porous — electrolyte infiltrated as a later step — solid-state electrodes must remain virtually void-free and integrate the electrolyte during the coating process itself. \nWhere lithium-ion electrode production relies on solvent-based coating, solid-state materials degrade on solvent contact and demand ultra-low moisture environments. \n\nThe process gap is not incremental. Solid-state electrode manufacturing requires a fundamentally different approach.',
+  //   bullets: [
+  //     ['Material stability', 'Solvents can degrade sensitive solid electrolytes'],
+  //     ['Porosity', 'Residual voids after manufacturing reduce performance'],
+  //   ],
+  //   layout: 'image-left',
+  //   Diagram: SlideChallenge,
+  // },
   {
     n: '02',
-    figCaption: 'The Swiss cheese problem: voids that block ion flow',
+    figCaption: 'Sensitive solid-state materials',
     eyebrow: 'The challenge',
-    title: 'Manufacturing solid-state electrodes.',
-    body: 'Today\'s lithium-ion electrode production technologies fail to deliver the key attributes solid-state batteries require. \n\nWhere lithium-ion electrodes are manufactured porous — electrolyte infiltrated as a later step — solid-state electrodes must remain virtually void-free and integrate the electrolyte during the coating process itself. \nWhere lithium-ion electrode production relies on solvent-based coating, solid-state materials degrade on solvent contact and demand ultra-low moisture environments. \n\nThe process gap is not incremental. Solid-state electrode manufacturing requires a fundamentally different approach.',
+    title: 'Manufacturing-induced degradation of solid-state electrodes.',
+    body: 'The electrodes in today\'s lithium-ion batteries are prevalently manufactured using a solvent-based processes.\n\nBut solid electrolytes are acutely sensitive to solvents and moisture.',
+    // Today\'s lithium-ion electrode production technologies fail to deliver the key attributes solid-state batteries require. \n\nWhere lithium-ion electrodes are manufactured porous — electrolyte infiltrated as a later step — solid-state electrodes must remain virtually void-free and integrate the electrolyte during the coating process itself. \nWhere lithium-ion electrode production relies on solvent-based coating, solid-state materials degrade on solvent contact and demand ultra-low moisture environments. \n\nThe process gap is not incremental. Solid-state electrode manufacturing requires a fundamentally different approach.',
     bullets: [
-      ['Material stability', 'Solvents can degrade sensitive solid electrolytes'],
-      ['Porosity', 'Residual voids after manufacturing reduce performance'],
+    //   ['Solvent exposure', 'Ionic conductivity drops after solvent exposure'],
+    //   ['Moisture exposure', 'Resistive interfaces form after moisture exposure'],
     ],
     layout: 'image-left',
     Diagram: SlideChallenge,
@@ -116,12 +133,12 @@ const TECH_SLIDES = [
     figCaption: 'Ternon\'s dry-coating line',
     eyebrow: 'The solution',
     title: "Ternon's dry-coating technology.",
-    body: 'Ternon has developed a dry-coating process purpose-built for solid-state electrode production — no solvents, no moisture, no compromises on material integrity. We transform free-flowing powders into dense, cohesive electrode sheets, with the microstructure precision that solid-state performance demands. \n\nWe are a team of materials scientists and engineers obsessed with electrode microstructure. We handle the electrode so you can focus on the cell. ',
+    body: 'Ternon has developed a dry-coating process purpose-built for solid-state electrode production — no solvents, no moisture, maximum materials performance.\n\nWe are a team of materials scientists and engineers obsessed with electrode microstructure. We handle the electrode so you can focus on the cell.',
     bullets: [
-      ['Materials integrity', 'No solvents and <0.1 ppm moisture in production \nto preserve sensitive solid-state materials'],
-      ['Maximized performance', 'Ultra-low binder and residual void fractions \nfor peak ionic conductivity'],
-      ['Scale', 'Continuous dry-coating line \ndesigned for volume production from day one'],
-      ['Sustainability', 'Dramatically reduced energy consumption \nand elimination of toxic solvents'],
+      ['Maximum performance', 'No materials degradation during manufacturing'],
+      ['Higher power', 'Low binder content for unobstructed ion pathways'],
+      // ['Scale', 'Continuous dry-coating line \ndesigned for volume production from day one'],
+      ['Sustainable', 'No energy-intensive drying step, no toxic solvents'],
     ],
     layout: 'image-left',
     Diagram: SlideUSP,

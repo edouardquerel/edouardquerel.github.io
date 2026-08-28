@@ -123,53 +123,14 @@ function Specs() {
           </div>
 
           <div className="specs-right">
-            <div className="specs-visual">
-              <div className="specs-visual-grid"></div>
-              <div className="specs-visual-corner">Fig. 04 · Electrode dimensions</div>
-              <svg className="electrode-svg" viewBox="0 0 200 160" preserveAspectRatio="xMidYMid meet">
-                <defs>
-                  <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                    <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(255,204,0,.22)" strokeWidth="1" />
-                  </pattern>
-                  <pattern id="hatchGhost" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                    <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(244,242,232,.07)" strokeWidth="1" />
-                  </pattern>
-                </defs>
-
-                {/* 10 × 20 cm sheet (roadmap) */}
-                <rect x="95" y="30" width="50" height="100" fill="url(#hatchGhost)" stroke="rgba(244,242,232,.35)" strokeWidth="0.7" strokeDasharray="3 2" />
-                <line x1="95" y1="23" x2="145" y2="23" stroke="rgba(244,242,232,.4)" strokeWidth="0.4" />
-                <line x1="95" y1="19" x2="95" y2="27" stroke="rgba(244,242,232,.4)" strokeWidth="0.4" />
-                <line x1="145" y1="19" x2="145" y2="27" stroke="rgba(244,242,232,.4)" strokeWidth="0.4" />
-                <text x="120" y="17" fill="rgba(244,242,232,.7)" fontSize="5" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="0.8">10 cm</text>
-                <line x1="153" y1="30" x2="153" y2="130" stroke="rgba(244,242,232,.4)" strokeWidth="0.4" />
-                <line x1="149" y1="30" x2="157" y2="30" stroke="rgba(244,242,232,.4)" strokeWidth="0.4" />
-                <line x1="149" y1="130" x2="157" y2="130" stroke="rgba(244,242,232,.4)" strokeWidth="0.4" />
-                <text x="160" y="80" fill="rgba(244,242,232,.7)" fontSize="5" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="0.8" transform="rotate(90 160 80)">20 cm</text>
-                <text x="120" y="143" fill="rgba(244,242,232,.55)" fontSize="4" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="1.4">AVAILABLE Q4 2026</text>
-
-                {/* 5 × 10 cm sheet (current) */}
-                <rect x="38" y="55" width="25" height="50" fill="url(#hatch)" stroke="#FFCC00" strokeWidth="1" />
-                <line x1="38" y1="48" x2="63" y2="48" stroke="rgba(244,242,232,.6)" strokeWidth="0.4" />
-                <line x1="38" y1="44" x2="38" y2="52" stroke="rgba(244,242,232,.6)" strokeWidth="0.4" />
-                <line x1="63" y1="44" x2="63" y2="52" stroke="rgba(244,242,232,.6)" strokeWidth="0.4" />
-                <text x="50.5" y="42" fill="#F4F2E8" fontSize="5" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="0.8">5 cm</text>
-                <line x1="30" y1="55" x2="30" y2="105" stroke="rgba(244,242,232,.6)" strokeWidth="0.4" />
-                <line x1="26" y1="55" x2="34" y2="55" stroke="rgba(244,242,232,.6)" strokeWidth="0.4" />
-                <line x1="26" y1="105" x2="34" y2="105" stroke="rgba(244,242,232,.6)" strokeWidth="0.4" />
-                <text x="23" y="80" fill="#F4F2E8" fontSize="5" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="0.8" transform="rotate(-90 23 80)">10 cm</text>
-                <text x="50.5" y="143" fill="#FFCC00" fontSize="4" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="1.4">AVAILABLE NOW</text>
-              </svg>
-            </div>
-
             <figure className="specs-photo">
               <div className="specs-photo-frame">
-                <img src="assets/electrode-photo.png" alt="Cathode electrode photographed on cutting mat with tweezers" />
+                <img src="assets/electrode-photo-2.png" alt="Dry-coated cathode electrode sheet" />
                 <div className="specs-photo-grid"></div>
                 <div className="specs-photo-vignette"></div>
               </div>
               <figcaption className="specs-photo-cap">
-                <span className="k">FIG. 05 · CATHODE SHEET</span>
+                <span className="k">FIG. 04 · CATHODE SHEET</span>
               </figcaption>
             </figure>
           </div>

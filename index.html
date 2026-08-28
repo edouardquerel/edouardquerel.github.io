@@ -349,42 +349,17 @@
   }
 
   .specs-right{display:flex; flex-direction:column; gap:24px}
-  .specs-visual{
-    aspect-ratio:1/1;
-    background:var(--panel-2);
-    border:1px solid var(--line-strong);
-    position:relative; overflow:hidden;
-  }
-  .specs-visual-grid{
-    position:absolute; inset:0;
-    background-image:
-      linear-gradient(to right, var(--line) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
-    background-size: 40px 40px;
-    opacity:.5;
-  }
-  .electrode-svg{position:absolute; inset:0; padding:14%}
-  .specs-visual-corner{
-    position:absolute; top:16px; left:16px;
-    font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase;
-    color:var(--ink-3);
-  }
 
   .specs-photo{margin:0; display:flex; flex-direction:column; gap:14px}
   .specs-photo-frame{
     position:relative;
-    aspect-ratio: 830/348;
     background:var(--panel-2);
     border:1px solid var(--line-strong);
     overflow:hidden;
   }
   .specs-photo-frame img{
-    position:absolute; top:50%; left:50%;
-    width: calc(100% * 348 / 830);
-    height: calc(100% * 830 / 348);
-    transform: translate(-50%, -50%) rotate(-90deg);
-    transform-origin: center center;
-    object-fit: cover;
+    display:block;
+    width:100%; height:auto;
     filter: saturate(0.4) contrast(1.05) brightness(0.92);
   }
   .specs-photo-grid{
